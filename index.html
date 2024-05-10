@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños Lili</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-LCEn/LO4iJYSzMnTkfT2UDCYmQu4gPqvgRgeC56d9zEBkl30HwBbevLtwE6+vdLR/3XrEgcuZdpaztT5xOsZwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    body {
+        background-color: #d1c4e9; /* Fondo morado claro */
+        font-family: Arial, sans-serif;
+        text-align: center;
+        overflow: hidden; /* Ocultar desbordamiento para evitar barras de desplazamiento */
+        position: relative; /* Para posicionar los elementos absolutos */
+    }
+    #yoongi {
+        width: 300px;
+        margin: 50px auto;
+    }
+    #mensaje {
+        font-size: 24px;
+        margin-top: 20px;
+        color: #333;
+    }
+    #pastel-container {
+        position: relative;
+        width: 300px; /* Ancho fijo */
+        margin: 0 auto; /* Centrar */
+    }
+    #pastel {
+        display: none;
+        margin: 30px auto;
+        animation: girar 2s linear infinite; /* Animación girar */
+    }
+    .perro {
+        width: 80px; /* Ancho reducido */
+        height: auto; /* Mantener la proporción */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    #perrito-izquierda {
+        left: -180px; /* Alejado hacia la izquierda */
+    }
+    #perrito-derecha {
+        right: -180px; /* Alejado hacia la derecha */
+    }
+    button {
+        padding: 20px 40px; /* Aumentar el tamaño del botón */
+        font-size: 24px; /* Aumentar el tamaño de la fuente */
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s; /* Transición de color */
+        animation: cambiaColor 5s infinite; /* Animación de cambio de color */
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* Animación de cambio de color */
+    @keyframes cambiaColor {
+        0% { background-color: #ff5252; }
+        25% { background-color: #ffab40; }
+        50% { background-color: #ffee58; }
+        75% { background-color: #69f0ae; }
+        100% { background-color: #40c4ff; }
+    }
+
+    @keyframes girar {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Animación de confeti */
+    .confeti {
+        width: 10px;
+        height: 10px;
+        background-color: #f39c12;
+        position: absolute;
+        opacity: 0;
+        animation: cae 3s infinite;
+    }
+
+    @keyframes cae {
+        0% { transform: translate(0, -100vh); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translate(calc(100vw - 10px), 100vh); opacity: 0; } /* Modificado */
+    }
+
+    /* Colores adicionales de confeti */
+    .confeti:nth-child(2) { background-color: #3498db; }
+    .confeti:nth-child(3) { background-color: #e74c3c; }
+    .confeti:nth-child(4) { background-color: #2ecc71; }
+    .confeti:nth-child(5) { background-color: #9b59b6; }
+    .confeti:nth-child(6) { background-color: #f1c40f; }
+    .confeti:nth-child(7) { background-color: #16a085; }
+    .confeti:nth-child(8) { background-color: #d35400; }
+    .confeti:nth-child(9) { background-color: #2980b9; }
+    .confeti:nth-child(10) { background-color: #c0392b; }
+    .confeti:nth-child(11) { background-color: #27ae60; }
+    .confeti:nth-child(12) { background-color: #8e44ad; }
+    
+    #video {
+        margin: 0 auto; /* Centrar */
+    }
+</style>
+</head>
+<body>
+
+<video id="video" style="display:none" width="640" height="360" controls>
+  <source src="cancion.mp4" type="video/mp4">
+  Tu navegador no soporta el elemento <code>video</code>.
+</video>
+
+<div id="yoongi">
+    <img src="yoongi.jpg" alt="Yoongi">
+</div>
+
+<button onclick="mostrarMensaje()">¡Feliz Cumpleaños Lili!</button>
+<p id="mensaje" style="display: none; margin-top: 20px; font-size: 20px; color: #4CAF50;"></p>
+<div id="pastel-container">
+    <img id="perrito-izquierda" class="perro" src="perrito_izquierda.jpg" alt="Perrito izquierda">
+    <img id="pastel" src="pastel.png" alt="Pastel de cumpleaños">
+    <img id="perrito-derecha" class="perro" src="perrito_derecha.jpg" alt="Perrito derecha">
+</div>
+
+<!-- Confeti -->
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+<div class="confeti"></div>
+
+<script>
+    function mostrarMensaje() {
+        var mensaje = document.getElementById("mensaje");
+        var pastel = document.getElementById("pastel");
+        mensaje.style.display = "block";
+        pastel.style.display = "block";
+        mensaje.innerHTML = "¡Feliz Cumpleaños Lili!";
+        
+        // Reproducir video
+        var video = document.getElementById("video");
+        video.style.display = "block";
+        video.play();
+
+        // Mostrar confeti al presionar el botón
+        var confeti = document.getElementsByClassName("confeti");
+        for (var i = 0; i < confeti.length; i++) {
+            confeti[i].style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
